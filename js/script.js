@@ -8,7 +8,7 @@
     /* [DONE] remove class 'active' from all article links  */
       const activeLinks = document.querySelectorAll('.titles a.active');
 
-      for(let activeLink of activeLinks){
+      for(const activeLink of activeLinks){
           activeLink.classList.remove('active');
       }
 
@@ -18,7 +18,7 @@
     /* [DONE] remove class 'active' from all articles */
       const activeArticles = document.querySelectorAll('.posts .active');
 
-      for(let activeArticle of activeArticles){
+      for(const activeArticle of activeArticles){
           activeArticle.classList.remove('active');
       }
 
@@ -39,7 +39,7 @@
   
     const articles = document.querySelectorAll('.post');
 
-    for(let article of articles){
+    for(const article of articles){
       /* [DONE] For each article, read its ID and save it to a constant.*/
       const articleId = article.getAttribute('id');
       console.log(articleId);
@@ -54,7 +54,7 @@
     document.querySelector('.list').innerHTML = allLinksHTML;
     const links = document.querySelectorAll('.titles a');
 
-    for(let link of links){
+    for(const link of links){
       link.addEventListener('click', titleClickHandler);
     }
 

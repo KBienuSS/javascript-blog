@@ -1,120 +1,231 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext');
 
-/* Variables */
-
+$color-primary: #f48024;
 $color-light: #fff;
 $color-dark: #444;
+$color-bg-subtle: #fff;
 
 $font-logo: 'Sacramento', cursive;
 $font-header: 'Oswald', sans-serif;
 $font-text: 'Source Sans Pro', sans-serif;
-
-/* Global */
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
-  background: $color-light;
+  background: white;
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.6;
 }
 
-.container {
-  max-width: 1140px;
-  margin: 0 auto;
-}
-
-.section-title {
-  font-size: 22px;
-  text-transform: uppercase;
-  font-family: $font-header;
-  font-weight: 600;
-  span {
-    text-transform: none;
-    font-weight: 400;
-    color: lighten($color-dark, 20%);
+a {
+  color: $color-primary;
+  text-decoration: none;
+  transition: color 0.3s, opacity 0.3s;
+  &:hover {
+    color: $color-primary;
   }
 }
 
-/* Layout */
+.section-title {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: $font-header;
+  font-weight: 600;
+  border-bottom: 2px solid $color-primary;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  span {
+    text-transform: none;
+    font-weight: 400;
+    color: $color-dark;
+  }
+}
 
 .wrapper {
   display: flex;
-  margin-left: 10px;
+  flex-direction: row;
 }
 
 .sidebar {
   flex: 1 0 0;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  &:first-child {
+    padding-right: 15px;
+  }
 }
 
 .posts {
-  flex: 2 0 0;
+  flex: 3 0 0;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .sidebar, .posts {
   background: $color-light;
-  margin-right: 10px;
-  padding: 40px;
-  border: 1px solid $color-dark;
-  border-radius: 5px;
+  padding: 20px;
+  padding-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
 }
-
-/* Logo */
 
 .logo {
   font-family: $font-logo;
   font-weight: 400;
-  font-size: 104px;
+  font-size: 40px;
   line-height: 1;
   text-align: center;
+  color: $color-dark;
 }
-
-/* Lists */
 
 .list {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  li {
+    margin-bottom: 8px;
+    padding: 2px 0;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: $color-primary;
+    }
+    a {
+      display: block;
+      color: $color-dark;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
   .active {
-    font-weight: bold;
+    font-weight: 600;
+    a {
+      color: $color-primary;
+    }
   }
 }
 
 .list-horizontal {
   li {
     display: inline-block;
+    margin-right: 10px;
+    background: $color-primary;
+    border-radius: 4px;
+    padding: 3px 8px;
+    &:hover {
+      background-color: $color-primary;
+      a {
+        color: $color-light;
+      }
+    }
+    a {
+      color: $color-dark;
+      font-size: 14px;
+      font-weight: 400;
+    }
   }
 }
 
-/* Authors */
+.tags, .authors {
+  li {
+    line-height: 1.2;
+  }
+}
 
 .authors {
   li {
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+  }
+  .author-name {
+    font-weight: 400;
+    font-size: 16px;
+    display: inline-block;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
-/* Post */
-
 .post {
-  display: none;
-  &.active {
-    display: block;
+  display: block;
+  position: absolute;
+  top:20;
+  left:20;
+  opacity: 0;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #eee;
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
+  &.active {
+    opacity: 100;
+    position: relative;
+    top:20;
+    left:20;
+    z-index: 100;
+    transition-duration: 1.5s;
+  }
+}
+
+.post-title {
+  font-family: $font-header;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: left;
+  color: $color-dark;
+  margin-top: 0;
+  margin-bottom: 10px;
 }
 
 .post-author {
   font-style: italic;
+  font-size: 15px;
+  color: $color-dark;
+  margin-top: -5px;
+  margin-bottom: 25px;
+  a {
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.post-content {
+  margin-bottom: 20px;
+  p {
+    margin-bottom: 15px;
+    text-align: justify;
+  }
 }
 
 .post-tags {
   display: flex;
+  align-items: center;
   p {
     margin: 0 10px 0 0;
+    font-weight: 600;
+    color: $color-dark;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .posts{
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
   }
 }
