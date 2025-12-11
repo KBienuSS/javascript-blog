@@ -93,9 +93,6 @@ a {
     margin-bottom: 8px;
     padding: 2px 0;
     transition: background-color 0.2s;
-    &:hover {
-      background-color: $color-primary;
-    }
     a {
       display: block;
       color: $color-dark;
@@ -136,6 +133,8 @@ a {
 .tags, .authors {
   li {
     line-height: 1.2;
+    display:inline-block;
+    margin:0 2px;
   }
 }
 
@@ -216,6 +215,26 @@ a {
     color: $color-dark;
     font-size: 15px;
   }
+}
+
+.tag-size-1{
+  font-size:8px;
+}
+
+.tag-size-2{
+  font-size:10px;
+}
+
+.tag-size-3{
+  font-size:14px;
+}
+
+.tag-size-4{
+  font-size:18px;
+}
+
+.tag-size-5{
+  font-size:22px;
 }
 
 @media (max-width: 480px) {
